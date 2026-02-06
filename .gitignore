@@ -1,0 +1,14 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backup and temporary files
+*_original.*
+analyze_image.py
+fix_image.py
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
