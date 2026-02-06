@@ -1,0 +1,13 @@
+# Инструкция по деплою на GitHub Pages
+
+1. Создайте новый репозиторий на GitHub (не добавляйте README, .gitignore или лицензию).
+2. Скопируйте ссылку на ваш репозиторий (например, `https://github.com/USER/RELO-NAME.git`).
+3. В терминале (в папке dark_supplements_landing) выполните команды:
+
+   git remote add origin ВАША_ССЫЛКА_ИЗ_ШАГА_2
+   git branch -M main
+   git push -u origin main
+
+4. Зайдите в настройки репозитория на GitHub (Settings -> Pages).
+5. В разделе "Build and deployment" -> "Branch" выберите `main` и папку `/ (root)`, нажмите Save.
+6. Через 1-2 минуты ваш сайт будет доступен по ссылке, которую покажет GitHub!

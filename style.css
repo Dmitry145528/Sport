@@ -889,47 +889,70 @@ body {
     }
 
     .product-showcase {
-        min-height: 300px;
-        height: auto;
-        flex: 1;
+        min-height: 250px;
+        height: 350px;
+        flex: none;
+        margin: 20px 0;
     }
 
     .bottle-3d {
-        width: 180px;
-        height: 240px;
+        width: 140px;
+        height: 200px;
     }
 
-    /* Adjust callouts for mobile view */
+    /* Adjust callouts for mobile view - compact positioning */
     .pos-1 {
-        right: 65%;
-        top: 10%;
-        align-items: flex-end;
+        right: 70%;
+        top: 5%;
     }
 
     .pos-2 {
-        left: 63%;
-        top: 40%;
-        align-items: flex-start;
+        left: 70%;
+        top: 45%;
     }
 
     .pos-3 {
-        right: 65%;
-        bottom: 10%;
-        align-items: flex-end;
+        right: 70%;
+        bottom: 5%;
     }
 
-    .callout .num {
-        font-size: 18px;
+    .callout-line {
+        width: 30px;
+        /* Shorter lines on mobile */
     }
 
-    .callout .label {
-        font-size: 8px;
+    .pos-1 .callout-line,
+    .pos-3 .callout-line {
+        width: 30px;
+    }
+
+    .pos-2 .callout-line {
+        width: 30px;
+    }
+
+    .callout-content {
+        padding: 6px 10px;
+    }
+
+    .callout-content .num {
+        font-size: 14px;
+    }
+
+    .callout-content .label {
+        font-size: 7px;
+    }
+
+    /* Scaling UI elements */
+    .promo-overlay {
+        top: 20px;
+        right: 10px;
+        transform: scale(0.85);
+        transform-origin: top right;
     }
 
     .matte-glow,
     .matte-structure {
         display: none;
-        /* Hide decorative background elements on mobile for performance and clarity */
     }
 }
 
@@ -1005,13 +1028,16 @@ body {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 15px var(--accent)) drop-shadow(0 0 5px var(--accent));
+    /* Contour Glow: Multiple layers of small-blur shadows for a neon edge effect */
+    filter:
+        drop-shadow(0 0 2px var(--accent)) drop-shadow(0 0 5px var(--accent)) drop-shadow(0 15px 30px rgba(0, 0, 0, 0.6));
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
 }
 
 .product-image:hover {
-    transform: scale(1.08);
-    filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 25px var(--accent)) drop-shadow(0 0 8px var(--accent));
+    transform: scale(1.05);
+    filter:
+        drop-shadow(0 0 3px var(--accent)) drop-shadow(0 0 8px var(--accent)) drop-shadow(0 20px 40px rgba(0, 0, 0, 0.7));
 }
 
 /* Product Jar Photo Styling (legacy) */
