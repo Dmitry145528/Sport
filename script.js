@@ -1,179 +1,188 @@
-// Dark Supplements Landing Interactivity
-
 document.addEventListener('DOMContentLoaded', () => {
 
-  // Update accent color based on current section
-  const sections = document.querySelectorAll('.full-section');
-  const root = document.documentElement;
+  // ===== Intersection Observer for Reveal Animations =====
+  // This handles the staggered appearance of widgets in each section
+  const revealOptions = {
+    threshold: 0.15,
+    rootMargin: "0px 0px -100px 0px"
+  };
 
-  const observer = new IntersectionObserver((entries) => {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const accent = entry.target.style.getPropertyValue('--accent');
-        if (accent) {
-          root.style.setProperty('--accent', accent);
-        }
+        entry.target.classList.add('revealed');
+        // Optional: Unobserve if you only want the animation to happen once
+        // observer.unobserve(entry.target);
+      } else {
+        // Remove class if you want animations to repeat when scrolling up/down
+        entry.target.classList.remove('revealed');
       }
     });
-  }, { threshold: 0.5 });
+  }, revealOptions);
 
-  sections.forEach(section => observer.observe(section));
+  // Watch all elements with .reveal class
+  document.querySelectorAll('.reveal').forEach(el => {
+    revealObserver.observe(el);
+  });
 
-  // Smooth scroll for nav links
+  // ===== Smooth Scroll for Anchor Links =====
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+      e.preventDefault();
       const targetId = this.getAttribute('href');
-
-      if (!targetId || targetId === '#') return;
-
-      try {
-        const target = document.querySelector(targetId);
-
-        if (target) {
-          // On mobile with scroll-snap, native anchor behavior is often more reliable
-          if (window.innerWidth <= 768) {
-            // Let default behavior handle it if needed, or force it
-            return;
-          }
-
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      } catch (err) {
-        console.warn('Invalid selector:', targetId);
+      const target = document.querySelector(targetId);
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
       }
     });
   });
 
-  // Form submission
-  const form = document.querySelector('.order-form');
-  if (form) {
-    form.addEventListener('submit', (e) => {
+  // ===== Form Submission Handling =====
+  const perfForm = document.getElementById('perf-form');
+  const formSuccess = document.getElementById('form-success');
+
+  if (perfForm) {
+    perfForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const btn = form.querySelector('.btn-submit');
-      btn.textContent = 'ЗАКАЗ ПРИНЯТ!';
-      btn.style.background = '#22c55e';
-      form.reset();
-      // Reset custom select
-      const selectedSpan = document.querySelector('.select-selected span');
-      if (selectedSpan) selectedSpan.textContent = 'Выберите продукт';
-      document.querySelectorAll('.select-option').forEach(opt => opt.classList.remove('selected'));
+      perfForm.style.display = 'none';
+      formSuccess.style.display = 'block';
+
+      // Optional: Auto-hide success message and show form again after 5s
+      setTimeout(() => {
+        formSuccess.style.display = 'none';
+        perfForm.style.display = 'flex';
+        perfForm.reset();
+      }, 5000);
     });
   }
 
-  // Custom Select Dropdown
-  const selectSelected = document.querySelector('.select-selected');
-  const selectItems = document.querySelector('.select-items');
-  const hiddenInput = document.querySelector('.custom-select input[type="hidden"]');
+  // ===== Theme Toggle Logic =====
+  const themeToggle = document.getElementById('theme-toggle');
+  const sunIcon = document.getElementById('sun-icon');
+  const moonIcon = document.getElementById('moon-icon');
+  const body = document.body;
 
-  if (selectSelected && selectItems) {
-    // Toggle dropdown
-    selectSelected.addEventListener('click', () => {
-      selectSelected.classList.toggle('active');
-      selectItems.classList.toggle('show');
+  const toggleProductImages = (isDark) => {
+    const images = document.querySelectorAll('.image-widget img');
+    images.forEach(img => {
+      let src = img.getAttribute('src');
+      if (isDark) {
+        if (!src.includes('-black')) {
+          img.setAttribute('src', src.replace('.png', '-black.png'));
+        }
+      } else {
+        img.setAttribute('src', src.replace('-black.png', '.png'));
+      }
+    });
+  };
+
+  // Check for saved theme
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  if (savedTheme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    sunIcon.style.display = 'none';
+    moonIcon.style.display = 'block';
+    toggleProductImages(true);
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      if (currentTheme === 'dark') {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+        sunIcon.style.display = 'block';
+        moonIcon.style.display = 'none';
+        toggleProductImages(false);
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'block';
+        toggleProductImages(true);
+      }
+    });
+  }
+
+  // ===== Custom Select Logic =====
+  const selectTrigger = document.getElementById('select-trigger');
+  const selectOptions = document.getElementById('select-options');
+  const optionsList = document.querySelectorAll('.select-option');
+  const hiddenInput = document.getElementById('selected-module');
+  const triggerText = selectTrigger ? selectTrigger.querySelector('span') : null;
+
+  if (selectTrigger && selectOptions) {
+    selectTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      selectOptions.classList.toggle('show');
+      selectTrigger.classList.toggle('active');
     });
 
-    // Handle option click
-    document.querySelectorAll('.select-option').forEach(option => {
+    optionsList.forEach(option => {
       option.addEventListener('click', () => {
-        // Update text
-        selectSelected.querySelector('span').textContent = option.textContent.trim();
-        selectSelected.classList.add('has-value');
+        const val = option.getAttribute('data-value');
+        const text = option.innerText;
 
-        // Update hidden input
-        if (hiddenInput) hiddenInput.value = option.dataset.value;
+        if (hiddenInput) hiddenInput.value = val;
+        if (triggerText) triggerText.innerText = text;
 
-        // Update selected state
-        document.querySelectorAll('.select-option').forEach(opt => opt.classList.remove('selected'));
-        option.classList.add('selected');
+        selectOptions.classList.remove('show');
+        selectTrigger.classList.remove('active');
 
-        // Close dropdown
-        selectSelected.classList.remove('active');
-        selectItems.classList.remove('show');
+        // Visual feedback for selection
+        selectTrigger.style.color = 'var(--accent)';
+        setTimeout(() => {
+          selectTrigger.style.color = '';
+        }, 300);
       });
     });
 
     // Close on outside click
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.custom-select')) {
-        selectSelected.classList.remove('active');
-        selectItems.classList.remove('show');
-      }
+    window.addEventListener('click', () => {
+      selectOptions.classList.remove('show');
+      selectTrigger.classList.remove('active');
     });
   }
 
-  // Custom Header / Burger
-  const burgerBtn = document.querySelector('.burger-menu');
-  const navLinksContainer = document.querySelector('.nav-links');
+  // ===== Dynamic Logo Color System =====
+  // Syncs logo accent with current section theme
+  const sectionColors = {
+    'theme-red': '#ff4d4d',
+    'theme-cyan': '#00d4ff',
+    'theme-purple': '#a855f7',
+    'theme-green': '#22c55e',
+    'theme-blue': '#3b82f6',
+    'theme-pink': '#ec4899',
+    'theme-orange': '#f97316'
+  };
 
-  if (burgerBtn && navLinksContainer) {
-    burgerBtn.addEventListener('click', () => {
-      burgerBtn.classList.toggle('active');
-      navLinksContainer.classList.toggle('active');
+  const logoObserverOptions = {
+    threshold: 0.2, // Lower threshold for better reliability on tall sections
+    rootMargin: "-40px 0px -40% 0px" // Better detection window
+  };
 
-      // Toggle icon safely
-      const icon = burgerBtn.querySelector('[data-lucide]') || burgerBtn.querySelector('i') || burgerBtn.querySelector('svg');
-      if (icon) {
-        if (navLinksContainer.classList.contains('active')) {
-          icon.setAttribute('data-lucide', 'x');
+  const logoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const section = entry.target;
+        // Find which theme class is applied
+        const themeClass = Object.keys(sectionColors).find(cls => section.classList.contains(cls));
+        if (themeClass) {
+          document.documentElement.style.setProperty('--logo-accent', sectionColors[themeClass]);
         } else {
-          icon.setAttribute('data-lucide', 'menu');
+          // Reset to default if no theme class
+          document.documentElement.style.setProperty('--logo-accent', 'var(--text-muted)');
         }
-        if (typeof lucide !== 'undefined') lucide.createIcons();
       }
-
-      // Prevent body scroll
-      document.body.style.overflow = navLinksContainer.classList.contains('active') ? 'hidden' : '';
     });
+  }, logoObserverOptions);
 
-    // Close on link click
-    navLinksContainer.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        burgerBtn.classList.remove('active');
-        navLinksContainer.classList.remove('active');
-        document.body.style.overflow = '';
-        const icon = burgerBtn.querySelector('[data-lucide]') || burgerBtn.querySelector('i') || burgerBtn.querySelector('svg');
-        if (icon) {
-          icon.setAttribute('data-lucide', 'menu');
-          if (typeof lucide !== 'undefined') lucide.createIcons();
-        }
-      });
-    });
-  }
+  document.querySelectorAll('.product-section').forEach(section => {
+    logoObserver.observe(section);
+  });
 
-  // ===== COUNTDOWN TIMER LOGIC =====
-  function initCountdownTimers() {
-    const timers = document.querySelectorAll('.countdown-timer');
-
-    timers.forEach(timer => {
-      const endDate = new Date(timer.dataset.end).getTime();
-
-      const updateTimer = () => {
-        const now = new Date().getTime();
-        const distance = endDate - now;
-
-        if (distance <= 0) {
-          // Timer expired - show zeros
-          timer.querySelector('.hours').textContent = '00';
-          timer.querySelector('.minutes').textContent = '00';
-          timer.querySelector('.seconds').textContent = '00';
-          return;
-        }
-
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        timer.querySelector('.hours').textContent = hours.toString().padStart(2, '0');
-        timer.querySelector('.minutes').textContent = minutes.toString().padStart(2, '0');
-        timer.querySelector('.seconds').textContent = seconds.toString().padStart(2, '0');
-      };
-
-      updateTimer(); // Initial call
-      setInterval(updateTimer, 1000); // Update every second
-    });
-  }
-
-  initCountdownTimers();
-  // ===== END COUNTDOWN TIMER =====
+  console.log('APEX LABS Performance Hub - Neomorphic Engine Running');
 });

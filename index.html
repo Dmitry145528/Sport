@@ -2,535 +2,389 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APEX LABS | Elite Performance Supplements</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APEX LABS | Performance Hub</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Fixed Nav -->
-    <!-- Shared SVG Assets (Gradients & Filters) -->
-    <svg style="width:0; height:0; position:absolute;" aria-hidden="true" focusable="false">
-        <defs>
-            <!-- Matte Black Body Gradient -->
-            <linearGradient id="bottleGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" style="stop-color:#050505" />
-                <stop offset="25%" style="stop-color:#1a1a1a" />
-                <stop offset="50%" style="stop-color:#2a2a2a" />
-                <stop offset="75%" style="stop-color:#1a1a1a" />
-                <stop offset="100%" style="stop-color:#050505" />
-            </linearGradient>
-            <!-- Shiny Cap Gradient -->
-            <linearGradient id="capGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" style="stop-color:#000" />
-                <stop offset="50%" style="stop-color:#333" />
-                <stop offset="100%" style="stop-color:#000" />
-            </linearGradient>
-            <filter id="neonShadow">
-                <feGaussianBlur stdDeviation="2" result="blur" />
-                <feComposite in="SourceGraphic" in2="blur" operator="over" />
-            </filter>
-        </defs>
-    </svg>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">APEX<span>LABS</span></div>
+    <div style="display: flex; align-items: center; gap: 20px;">
+      <button id="theme-toggle" class="theme-toggle-btn">
+        <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg id="moon-icon" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+      <a href="#order" class="btn-cta">ORDER NOW</a>
+    </div>
+  </nav>
 
-    <header class="top-nav">
-        <div class="logo">APEX<span>LABS</span></div>
-        <a href="#order" class="nav-cta">ORDER NOW</a>
-        <button class="burger-menu" aria-label="Toggle Menu">
-            <i data-lucide="menu"></i>
-        </button>
-    </header>
-
-    <ul class="nav-links">
-        <li><a href="#thermogen">THERMOGEN</a></li>
-        <li><a href="#energy">ENERGY</a></li>
-        <li><a href="#protein">PROTEIN</a></li>
-        <li><a href="#bcaa">BCAA</a></li>
-        <li><a href="#omega">OMEGA-3</a></li>
-        <li><a href="#collagen">COLLAGEN</a></li>
-        <li><a href="#pre-workout">PRE-WORKOUT</a></li>
-    </ul>
-    <main>
-        <!-- Section 1: Hero / Thermogen -->
-        <section id="thermogen" class="full-section" style="--accent: #ff4d4d;">
-            <div class="bg-layer dark-bg"></div>
-            <div class="content-wrap">
-                <span class="tag">01 / THERMOGENICS</span>
-                <h1>IGNITE YOUR<br><span>METABOLISM</span></h1>
-                <p>Революционная формула жиросжигания. Ускоряет метаболизм на 47%.</p>
-                <a href="#order" class="btn-glow">ЗАКАЗАТЬ</a>
-            </div>
-
-            <div class="product-showcase">
-                <!-- Promo Overlay -->
-                <div class="promo-overlay">
-                    <span class="discount-badge">-30%</span>
-                    <div class="price-block">
-                        <span class="price-old">$99</span>
-                        <span class="price-new">$69</span>
-                    </div>
-                    <div class="countdown-timer" data-end="2026-02-10T00:00:00">
-                        <div class="time-block"><span class="time-value hours">00</span><span class="time-unit">ч</span>
-                        </div>
-                        <span class="separator">:</span>
-                        <div class="time-block"><span class="time-value minutes">00</span><span
-                                class="time-unit">м</span></div>
-                        <span class="separator">:</span>
-                        <div class="time-block"><span class="time-value seconds">00</span><span
-                                class="time-unit">с</span></div>
-                    </div>
-                </div>
-
-
-                <div class="bottle-3d">
-                    <img src="assets/red.png" alt="Thermogen Fat Burner" class="product-image">
-                    <div class="callout pos-1">
-                        <div class="callout-content">
-                            <span class="num">500mg</span>
-                            <span class="label">CAFFEINE COMPLEX</span>
-                        </div>
-                        <div class="callout-line"></div>
-                    </div>
-                    <div class="callout pos-2">
-                        <div class="callout-content">
-                            <span class="num">120</span>
-                            <span class="label">CAPSULES</span>
-                        </div>
-                        <div class="callout-line"></div>
-                    </div>
-                    <div class="callout pos-3">
-                        <div class="callout-content">
-                            <span class="num">$59</span>
-                            <span class="label">STARTING PRICE</span>
-                        </div>
-                        <div class="callout-line"></div>
-                    </div>
-                </div>
-
-
-
-            </div>
-            <div class="scroll-hint">Scroll to Explore More <i data-lucide="chevron-down"></i></div>
-        </section>
-
-        <!-- Section 2: Energy -->
-        <section id="energy" class="full-section" style="--accent: #00d9ff;">
-            <div class="bg-layer dark-bg"></div>
-            <div class="content-wrap">
-                <span class="tag">02 / ENERGY BOOST</span>
-                <h1>PURE<br><span>POWER</span></h1>
-                <p>Мгновенный заряд энергии без сахара. Таурин, Гуарана и Витамин B12.</p>
-                <a href="#order" class="btn-glow">ЗАКАЗАТЬ</a>
-            </div>
-            <div class="product-showcase">
-                <!-- Promo Overlay -->
-                <div class="promo-overlay">
-                    <span class="discount-badge">-25%</span>
-                    <div class="price-block">
-                        <span class="price-old">$49</span>
-                        <span class="price-new">$39</span>
-                    </div>
-                    <div class="countdown-timer" data-end="2026-02-10T00:00:00">
-                        <div class="time-block"><span class="time-value hours">00</span><span class="time-unit">ч</span>
-                        </div>
-                        <span class="separator">:</span>
-                        <div class="time-block"><span class="time-value minutes">00</span><span
-                                class="time-unit">м</span></div>
-                        <span class="separator">:</span>
-                        <div class="time-block"><span class="time-value seconds">00</span><span
-                                class="time-unit">с</span></div>
-                    </div>
-                </div>
-
-
-                <div class="bottle-3d">
-                    <img src="assets/blue.png" alt="Energy Pure Power" class="product-image">
-                    <div class="callout pos-1">
-                        <div class="callout-content">
-                            <span class="num">300mg</span>
-                            <span class="label">TAURINE surge</span>
-                        </div>
-                        <div class="callout-line"></div>
-                    </div>
-                    <div class="callout pos-2">
-                        <div class="callout-content">
-                            <span class="num">8hr</span>
-                            <span class="label">EFFECT DURATION</span>
-                        </div>
-                        <div class="callout-line"></div>
-                    </div>
-                    <div class="callout pos-3">
-                        <div class="callout-content">
-                            <span class="num">$39</span>
-                            <span class="label">STARTING PRICE</span>
-                        </div>
-                        <div class="callout-line"></div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Section 3: Protein -->
-        <section id="protein" class="full-section" style="--accent: #a855f7;">
-            <div class="bg-layer dark-bg"></div>
-
-            <div class="content-wrap">
-                <span class="tag">03 / WHEY PROTEIN</span>
-                <h1>BUILD<br><span>MUSCLE MASS</span></h1>
-                <p>Изолят сывороточного протеина высшей очистки. 27г белка на порцию.</p>
-                <a href="#order" class="btn-glow">ЗАКАЗАТЬ</a>
-            </div>
-            <div class="product-showcase">
-                <!-- Promo Overlay -->
-                <div class="promo-overlay">
-                    <span class="discount-badge">-20%</span>
-                    <div class="price-block">
-                        <span class="price-old">$99</span>
-                        <span class="price-new">$79</span>
-                    </div>
-                    <div class="countdown-timer" data-end="2026-02-10T00:00:00">
-                        <div class="time-block"><span class="time-value hours">00</span><span class="time-unit">ч</span>
-                        </div>
-                        <span class="separator">:</span>
-                        <div class="time-block"><span class="time-value minutes">00</span><span
-                                class="time-unit">м</span></div>
-                        <span class="separator">:</span>
-                        <div class="time-block"><span class="time-value seconds">00</span><span
-                                class="time-unit">с</span></div>
-                    </div>
-                </div>
-
-
-                <div class="bottle-3d">
-                    <img src="assets/purple.png" alt="Whey Protein" class="product-image">
-                    <div class="callout pos-1">
-                        <div class="callout-content">
-                            <span class="num">27g</span>
-                            <span class="label">PROTEIN ISOLATE</span>
-                        </div>
-                        <div class="callout-line"></div>
-                    </div>
-                    <div class="callout pos-2">
-                        <div class="callout-content">
-                            <span class="num">90%</span>
-                            <span class="label">PURITY RATE</span>
-                        </div>
-                        <div class="callout-line"></div>
-                    </div>
-                    <div class="callout pos-3">
-                        <div class="callout-content">
-                            <span class="num">$79</span>
-                            <span class="label">STARTING PRICE</span>
-                        </div>
-                        <div class="callout-line"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 4: BCAA -->
-        <section id="bcaa" class="full-section" style="--accent: #22c55e;">
-            <div class="bg-layer dark-bg"></div>
-
-            <div class="content-wrap">
-                <span class="tag">04 / BCAA COMPLEX</span>
-                <h1>RECOVER<br><span>FASTER</span></h1>
-                <p>Аминокислоты с разветвленной цепью 2:1:1 для восстановления.</p>
-                <a href="#order" class="btn-glow">ЗАКАЗАТЬ</a>
-            </div>
-            <div class="product-showcase">
-                <!-- Promo Overlay -->
-                <div class="promo-overlay">
-                    <span class="discount-badge">-15%</span>
-                    <div class="price-block">
-                        <span class="price-old">$59</span>
-                        <span class="price-new">$49</span>
-                    </div>
-                    <div class="countdown-timer" data-end="2026-02-10T00:00:00">
-                        <div class="time-block"><span class="time-value hours">00</span><span class="time-unit">ч</span>
-                        </div>
-                        <span class="separator">:</span>
-                        <div class="time-block"><span class="time-value minutes">00</span><span
-                                class="time-unit">м</span></div>
-                        <span class="separator">:</span>
-                        <div class="time-block"><span class="time-value seconds">00</span><span
-                                class="time-unit">с</span></div>
-                    </div>
-                </div>
-
-                <div class="bottle-3d">
-                    <img src="assets/green.png" alt="BCAA Complex" class="product-image">
-                    <div class="callout pos-1">
-                        <div class="callout-content">
-                            <span class="num">5000mg</span>
-                            <span class="label">pure LEUCINE</span>
-                        </div>
-                        <div class="callout-line"></div>
-                    </div>
-                    <div class="callout pos-2">
-                        <div class="callout-content">
-                            <span class="num">2:1:1</span>
-                            <span class="label">RECOVERY RATIO</span>
-                        </div>
-                        <div class="callout-line"></div>
-                    </div>
-                    <div class="callout pos-3">
-                        <div class="callout-content">
-                            <span class="num">$49</span>
-                            <span class="label">STARTING PRICE</span>
-                        </div>
-                        <div class="callout-line"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 5: Omega-3 -->
-        <section id="omega" class="full-section" style="--accent: #3b82f6;">
-            <div class="bg-layer dark-bg"></div>
-
-            <div class="content-wrap">
-                <span class="tag">05 / OMEGA-3 ULTRA</span>
-                <h1>HEART &<br><span>BRAIN HEALTH</span></h1>
-                <p>Тройная очистка рыбьего жира. EPA и DHA 1000мг.</p>
-                <a href="#order" class="btn-glow">ЗАКАЗАТЬ</a>
-            </div>
-            <div class="product-showcase">
-                <!-- Promo Overlay -->
-                <div class="promo-overlay">
-                    <span class="discount-badge">-10%</span>
-                    <div class="price-block">
-                        <span class="price-old">$39</span>
-                        <span class="price-new">$35</span>
-                    </div>
-                    <div class="countdown-timer" data-end="2026-02-10T00:00:00">
-                        <div class="time-block"><span class="time-value hours">00</span><span class="time-unit">ч</span>
-                        </div>
-                        <span class="separator">:</span>
-                        <div class="time-block"><span class="time-value minutes">00</span><span
-                                class="time-unit">м</span></div>
-                        <span class="separator">:</span>
-                        <div class="time-block"><span class="time-value seconds">00</span><span
-                                class="time-unit">с</span></div>
-                    </div>
-                </div>
-
-                <div class="bottle-3d">
-                    <img src="assets/darkblue.png" alt="Omega-3 Ultra" class="product-image">
-                    <div class="callout pos-1">
-                        <div class="callout-content">
-                            <span class="num">1000mg</span>
-                            <span class="label">pure EPA + DHA</span>
-                        </div>
-                        <div class="callout-line"></div>
-                    </div>
-                    <div class="callout pos-2">
-                        <div class="callout-content">
-                            <span class="num">180</span>
-                            <span class="label">SOFTGELS CAPS</span>
-                        </div>
-                        <div class="callout-line"></div>
-                    </div>
-                    <div class="callout pos-3">
-                        <div class="callout-content">
-                            <span class="num">$35</span>
-                            <span class="label">STARTING PRICE</span>
-                        </div>
-                        <div class="callout-line"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 6: Collagen -->
-        <section id="collagen" class="full-section" style="--accent: #ec4899;">
-            <div class="bg-layer dark-bg"></div>
-
-            <div class="content-wrap">
-                <span class="tag">06 / MARINE COLLAGEN</span>
-                <h1>YOUTHFUL<br><span>GLOW</span></h1>
-                <p>Гидролизованный морской коллаген типа I и III.</p>
-                <a href="#order" class="btn-glow">ЗАКАЗАТЬ</a>
-            </div>
-
-            <div class="product-showcase">
-                <!-- Promo Overlay -->
-                <div class="promo-overlay">
-                    <span class="discount-badge">-25%</span>
-                    <div class="price-block">
-                        <span class="price-old">$75</span>
-                        <span class="price-new">$55</span>
-                    </div>
-                    <div class="countdown-timer" data-end="2026-02-10T00:00:00">
-                        <div class="time-block"><span class="time-value hours">00</span><span class="time-unit">ч</span>
-                        </div>
-                        <span class="separator">:</span>
-                        <div class="time-block"><span class="time-value minutes">00</span><span
-                                class="time-unit">м</span></div>
-                        <span class="separator">:</span>
-                        <div class="time-block"><span class="time-value seconds">00</span><span
-                                class="time-unit">с</span></div>
-                    </div>
-                </div>
-
-                <div class="bottle-3d">
-                    <img src="assets/pink.png" alt="Marine Collagen" class="product-image">
-                    <div class="callout pos-1">
-                        <div class="callout-content">
-                            <span class="num">10g</span>
-                            <span class="label">MARINE COLLAGEN</span>
-                        </div>
-                        <div class="callout-line"></div>
-                    </div>
-                    <div class="callout pos-2">
-                        <div class="callout-content">
-                            <span class="num">premium</span>
-                            <span class="label">Type I & TYPE III</span>
-                        </div>
-                        <div class="callout-line"></div>
-                    </div>
-                    <div class="callout pos-3">
-                        <div class="callout-content">
-                            <span class="num">$55</span>
-                            <span class="label">STARTING PRICE</span>
-                        </div>
-                        <div class="callout-line"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 7: Pre-Workout -->
-        <section id="pre-workout" class="full-section" style="--accent: #f97316;">
-            <div class="bg-layer dark-bg"></div>
-
-            <div class="content-wrap">
-                <span class="tag">07 / PRE-WORKOUT EXTREME</span>
-                <h1>UNLEASH<br><span>THE BEAST</span></h1>
-                <p>Взрывная формула перед тренировкой. Цитруллин и Креатин.</p>
-                <a href="#order" class="btn-glow">ЗАКАЗАТЬ</a>
-            </div>
-
-            <div class="product-showcase">
-                <!-- Promo Overlay -->
-                <div class="promo-overlay">
-                    <span class="discount-badge">-30%</span>
-                    <div class="price-block">
-                        <span class="price-old">$89</span>
-                        <span class="price-new">$65</span>
-                    </div>
-                    <div class="countdown-timer" data-end="2026-02-10T00:00:00">
-                        <div class="time-block"><span class="time-value hours">00</span><span class="time-unit">ч</span>
-                        </div>
-                        <span class="separator">:</span>
-                        <div class="time-block"><span class="time-value minutes">00</span><span
-                                class="time-unit">м</span></div>
-                        <span class="separator">:</span>
-                        <div class="time-block"><span class="time-value seconds">00</span><span
-                                class="time-unit">с</span></div>
-                    </div>
-                </div>
-
-                <div class="bottle-3d">
-                    <img src="assets/orange.png" alt="Pre-Workout Extreme" class="product-image">
-                    <div class="callout pos-1">
-                        <div class="callout-content">
-                            <span class="num">6g</span>
-                            <span class="label">L-CITRULLINE</span>
-                        </div>
-                        <div class="callout-line"></div>
-                    </div>
-                    <div class="callout pos-2">
-                        <div class="callout-content">
-                            <span class="num">3.2g</span>
-                            <span class="label">BETA-ALANINE</span>
-                        </div>
-                        <div class="callout-line"></div>
-                    </div>
-                    <div class="callout pos-3">
-                        <div class="callout-content">
-                            <span class="num">$65</span>
-                            <span class="label">STARTING PRICE</span>
-                        </div>
-                        <div class="callout-line"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Order Section -->
-        <section id="order" class="order-section">
-
-            <div class="order-container">
-                <h2>READY TO <span>TRANSFORM?</span></h2>
-                <p>Заполните форму и получите персональную скидку 20%</p>
-                <form class="order-form">
-                    <input type="text" placeholder="Ваше имя" required>
-                    <input type="tel" placeholder="Ваш телефон" required>
-                    <div class="custom-select">
-                        <div class="select-selected">
-                            <span>Выберите продукт</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </div>
-                        <div class="select-items">
-                            <div class="select-option" data-value="thermogen">
-                                <span class="option-icon" style="background: #ff4d4d;"></span>
-                                THERMOGEN - Жиросжигатель
-                            </div>
-                            <div class="select-option" data-value="energy">
-                                <span class="option-icon" style="background: #00d4ff;"></span>
-                                ENERGY BOOST - Энергетик
-                            </div>
-                            <div class="select-option" data-value="protein">
-                                <span class="option-icon" style="background: #a855f7;"></span>
-                                WHEY PROTEIN - Протеин
-                            </div>
-                            <div class="select-option" data-value="bcaa">
-                                <span class="option-icon" style="background: #22c55e;"></span>
-                                BCAA COMPLEX - Аминокислоты
-                            </div>
-                            <div class="select-option" data-value="omega">
-                                <span class="option-icon" style="background: #3b82f6;"></span>
-                                OMEGA-3 ULTRA - Омега-3
-                            </div>
-                            <div class="select-option" data-value="collagen">
-                                <span class="option-icon" style="background: #ec4899;"></span>
-                                MARINE COLLAGEN - Коллаген
-                            </div>
-                            <div class="select-option" data-value="preworkout">
-                                <span class="option-icon" style="background: #f97316;"></span>
-                                PRE-WORKOUT EXTREME - Предтреник
-                            </div>
-                        </div>
-                        <input type="hidden" name="product" value="">
-                    </div>
-                    <button type="submit" class="btn-submit">ОФОРМИТЬ ЗАКАЗ</button>
-                </form>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="logo">APEX<span>LABS</span></div>
-            <p>НЕ ЯВЛЯЕТСЯ ЛЕКАРСТВЕННЫМ СРЕДСТВОМ. ПРОКОНСУЛЬТИРУЙТЕСЬ СО СПЕЦИАЛИСТОМ.</p>
+  <!-- SECTION 1: THERMOGEN -->
+  <section id="thermogen" class="product-section theme-red">
+    <div class="content-container">
+      <h1 class="section-title reveal">01. <span>THERMOGEN</span> EXTREME</h1>
+      <div class="bento-grid">
+        <div class="widget hero-widget reveal">
+          <span class="tag">Burn & Ignite</span>
+          <h2>Metabolic Precision</h2>
+          <p>Революционная формула жиросжигания, разработанная для атлетов. Ускоряет метаболизм на 47% и повышает
+            концентрацию.</p>
+          <a href="#order" class="btn-cta">ДОБАВИТЬ В КОРЗИНУ</a>
         </div>
-    </footer>
+        <div class="widget image-widget reveal">
+          <img src="assets/Thermogen.png" alt="Thermogen">
+        </div>
+        <div class="widget stats-widget reveal">
+          <div class="stat-item">
+            <span class="stat-val">500mg</span>
+            <span class="stat-label">Caffeine Mix</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-val">120</span>
+            <span class="stat-label">Capsules</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-val">$69</span>
+            <span class="stat-label">Price</span>
+          </div>
+        </div>
+        <div class="widget testimonial-widget reveal">
+          <blockquote>"Лучший жиросжигатель, который я когда-либо пробовал. Результаты спустя 2 недели — просто космос."
+          </blockquote>
+          <div class="author">
+            <div class="author-avatar">АК</div>
+            <div class="author-info">
+              <span style="display: block; font-weight: 700; font-size: 14px;">Алексей К.</span>
+              <span style="font-size: 11px; color: var(--text-muted);">Pro Marathoner</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
-    <script>lucide.createIcons();</script>
+  <!-- SECTION 2: ENERGY -->
+  <section id="energy" class="product-section theme-cyan">
+    <div class="content-container">
+      <h1 class="section-title reveal">02. <span>ENERGY</span> BOOST</h1>
+      <div class="bento-grid">
+        <div class="widget image-widget reveal">
+          <img src="assets/Energy.png" alt="Energy Boost">
+        </div>
+        <div class="widget hero-widget reveal">
+          <span class="tag">Pure Focus</span>
+          <h2>Explosive Energy</h2>
+          <p>Чистая энергия без "откатов". Идеально подходит для длительных тренировок и умственной работы на пределе.
+          </p>
+          <a href="#order" class="btn-cta">ПОПРОБОВАТЬ</a>
+        </div>
+        <div class="widget testimonial-widget reveal">
+          <blockquote>"Энергия держится ровно, нет тахикардии. Фокус на тренировке невероятный."</blockquote>
+          <div class="author">
+            <div class="author-avatar">ИС</div>
+            <div class="author-info">
+              <span style="display: block; font-weight: 700; font-size: 14px;">Игорь С.</span>
+              <span style="font-size: 11px; color: var(--text-muted);">CrossFit Pro</span>
+            </div>
+          </div>
+        </div>
+        <div class="widget stats-widget reveal">
+          <div class="stat-item">
+            <span class="stat-val">0g</span>
+            <span class="stat-label">Sugar</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-val">8h</span>
+            <span class="stat-label">Intensity</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-val">$49</span>
+            <span class="stat-label">Price</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: PROTEIN -->
+  <section id="protein" class="product-section theme-purple">
+    <div class="content-container">
+      <h1 class="section-title reveal">03. <span>WHEY</span> PROTEIN</h1>
+      <div class="bento-grid">
+        <div class="widget hero-widget reveal">
+          <span class="tag">Muscle Growth</span>
+          <h2>Isolate Matrix</h2>
+          <p>Премиальный изолят сывороточного белка. Максимальная скорость усвоения и великолепный вкус шоколадного
+            пломбира.</p>
+          <a href="#order" class="btn-cta">ВЫБРАТЬ ВКУС</a>
+        </div>
+        <div class="widget stats-widget reveal">
+          <div class="stat-item">
+            <span class="stat-val">27g</span>
+            <span class="stat-label">Protein</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-val">76</span>
+            <span class="stat-label">Servings</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-val">$85</span>
+            <span class="stat-label">Price</span>
+          </div>
+        </div>
+        <div class="widget image-widget reveal">
+          <img src="assets/Protein.png" alt="Whey Protein">
+        </div>
+        <div class="widget testimonial-widget reveal">
+          <blockquote>"Растворяется за секунды даже в воде. Вкус — лучший на рынке."</blockquote>
+          <div class="author">
+            <div class="author-avatar">МД</div>
+            <div class="author-info">
+              <span style="display: block; font-weight: 700; font-size: 14px;">Мария Д.</span>
+              <span style="font-size: 11px; color: var(--text-muted);">Fitness Bikini</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: BCAA -->
+  <section id="bcaa" class="product-section theme-green">
+    <div class="content-container">
+      <h1 class="section-title reveal">04. <span>BCAA</span> COMPLEX</h1>
+      <div class="bento-grid">
+        <div class="widget image-widget reveal">
+          <img src="assets/BCAA.png" alt="BCAA">
+        </div>
+        <div class="widget testimonial-widget reveal">
+          <blockquote>"Незаменим для восстановления. Мышцы болят гораздо меньше после тяжелых приседов."</blockquote>
+          <div class="author">
+            <div class="author-avatar">ДЛ</div>
+            <div class="author-info">
+              <span style="display: block; font-weight: 700; font-size: 14px;">Дмитрий Л.</span>
+              <span style="font-size: 11px; color: var(--text-muted);">Bodybuilder</span>
+            </div>
+          </div>
+        </div>
+        <div class="widget hero-widget reveal">
+          <span class="tag">Recovery</span>
+          <h2>8:1:1 Ratio</h2>
+          <p>Максимальная концентрация лейцина для запуска анаболических процессов и защиты мышц от катаболизма во время
+            сушки.</p>
+          <a href="#order" class="btn-cta">ЗАКАЗАТЬ</a>
+        </div>
+        <div class="widget stats-widget reveal">
+          <div class="stat-item">
+            <span class="stat-val">10g</span>
+            <span class="stat-label">BCAA/Portion</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-val">Electrolytes</span>
+            <span class="stat-label">Added</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-val">$39</span>
+            <span class="stat-label">Price</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: OMEGA-3 -->
+  <section id="omega" class="product-section theme-blue">
+    <div class="content-container">
+      <h1 class="section-title reveal">05. <span>OMEGA3</span> ULTRA</h1>
+      <div class="bento-grid">
+        <div class="widget stats-widget reveal">
+          <div class="stat-item">
+            <span class="stat-val">1000mg</span>
+            <span class="stat-label">EPA/DHA</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-val">IFOS</span>
+            <span class="stat-label">Certified</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-val">$29</span>
+            <span class="stat-label">Price</span>
+          </div>
+        </div>
+        <div class="widget hero-widget reveal">
+          <span class="tag">Vitality</span>
+          <h2>Cold-Press Extraction</h2>
+          <p>Чистейший рыбий жир из анчоусовых. Поддерживает здоровье сердца, мозга и суставов.</p>
+          <a href="#order" class="btn-cta">КУПИТЬ</a>
+        </div>
+        <div class="widget image-widget reveal">
+          <img src="assets/Omega3.png" alt="Omega 3">
+        </div>
+        <div class="widget testimonial-widget reveal">
+          <blockquote>"Качество ощущается с первой капсулы. Нет рыбного послевкусия."</blockquote>
+          <div class="author">
+            <div class="author-avatar">НВ</div>
+            <div class="author-info">
+              <span style="display: block; font-weight: 700; font-size: 14px;">Николай В.</span>
+              <span style="font-size: 11px; color: var(--text-muted);">Health Enthusiast</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: COLLAGEN -->
+  <section id="collagen" class="product-section theme-pink">
+    <div class="content-container">
+      <h1 class="section-title reveal">06. <span>MARINE</span> COLLAGEN</h1>
+      <div class="bento-grid">
+        <div class="widget image-widget reveal">
+          <img src="assets/Collagen.png" alt="Marine Collagen">
+        </div>
+        <div class="widget hero-widget reveal">
+          <span class="tag">Beauty & Joints</span>
+          <h2>Type I & III</h2>
+          <p>Морской коллаген с витамином С. Улучшает состояние кожи, волос и укрепляет связки.</p>
+          <a href="#order" class="btn-cta">ЗАКАЗАТЬ</a>
+        </div>
+        <div class="widget testimonial-widget reveal">
+          <blockquote>"Ногти стали крепче уже через месяц приема. Коллаген действительно работает."</blockquote>
+          <div class="author">
+            <div class="author-avatar">ЕП</div>
+            <div class="author-info">
+              <span style="display: block; font-weight: 700; font-size: 14px;">Екатерина П.</span>
+              <span style="font-size: 11px; color: var(--text-muted);">Yoga Instructor</span>
+            </div>
+          </div>
+        </div>
+        <div class="widget stats-widget reveal">
+          <div class="stat-item">
+            <span class="stat-val">Hydrolized</span>
+            <span class="stat-label">Peptides</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-val">98%</span>
+            <span class="stat-label">Bioavailability</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-val">$55</span>
+            <span class="stat-label">Price</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: PRE-WORKOUT -->
+  <section id="preworkout" class="product-section theme-orange">
+    <div class="content-container">
+      <h1 class="section-title reveal">07. <span>PRE-WORKOUT</span> EXTREME</h1>
+      <div class="bento-grid">
+        <div class="widget hero-widget reveal">
+          <span class="tag">Intensity</span>
+          <h2>PUMP & DRIVE</h2>
+          <p>Бескомпромиссная предтренировочная формула. Невероятный пампинг и ментальная концентрация.</p>
+          <a href="#order" class="btn-cta">READY TO TRAIN?</a>
+        </div>
+        <div class="widget stats-widget reveal">
+          <div class="stat-item">
+            <span class="stat-val">Beta-Alanine</span>
+            <span class="stat-label">Strength</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-val">Citrulline</span>
+            <span class="stat-label">Pump</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-val">$45</span>
+            <span class="stat-label">Price</span>
+          </div>
+        </div>
+        <div class="widget image-widget reveal">
+          <img src="assets/Pre-vork.png" alt="Pre-Workout">
+        </div>
+        <div class="widget testimonial-widget reveal">
+          <blockquote>"Это просто пушка. Треня проходит на одном дыхании."</blockquote>
+          <div class="author">
+            <div class="author-avatar">РШ</div>
+            <div class="author-info">
+              <span style="display: block; font-weight: 700; font-size: 14px;">Руслан Ш.</span>
+              <span style="font-size: 11px; color: var(--text-muted);">Powerlifter</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION ORDER -->
+  <section id="order" class="product-section">
+    <div class="content-container">
+      <h1 class="section-title reveal">FINALIZE <span>PERFORMANCE</span></h1>
+      <div class="widget reveal" style="max-width: 630px; margin: 0 auto;">
+        <span class="tag">Order Form</span>
+        <h2 style="margin-bottom: 30px;">Complete Your System</h2>
+        <form id="perf-form" class="neomorphic-form">
+          <input type="text" placeholder="Full Name" required>
+          <input type="email" placeholder="Email Address" required>
+
+          <!-- Custom Neomorphic Select -->
+          <div class="custom-select-container">
+            <div id="select-trigger" class="select-trigger">
+              <span>Select Product Module</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+            <div id="select-options" class="select-options">
+              <div class="select-option" data-value="thermogen">Thermogen Extreme</div>
+              <div class="select-option" data-value="energy">Energy Boost</div>
+              <div class="select-option" data-value="protein">Whey Protein</div>
+              <div class="select-option" data-value="bcaa">BCAA Complex</div>
+              <div class="select-option" data-value="omega">Omega3 Ultra</div>
+              <div class="select-option" data-value="collagen">Marine Collagen</div>
+              <div class="select-option" data-value="preworkout">Pre-Workout Extreme</div>
+            </div>
+            <input type="hidden" id="selected-module" name="module" required>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-cta">ACTIVATE PROTOCOL</button>
+          </div>
+        </form>
+        <div id="form-success" class="form-success-message">
+          PROTOCOL ACTIVATED. CHECK YOUR EMAIL.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="footer-logo">APEX<span>LABS</span></p>
+    <p class="footer-copyright">© 2026 APEX LABS. Performance Intelligence Unit.</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 
 </html>
