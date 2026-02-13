@@ -317,8 +317,13 @@ h3 {
   justify-content: center;
 }
 
-/* Visibility fix for header and form: use theme variables for shadows */
-.navbar .btn-cta,
+.navbar .btn-cta {
+  padding: 10px 25px;
+  font-size: 14px;
+  box-shadow: var(--neo-shadow-btn);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
 #perf-form .btn-cta {
   box-shadow: var(--neo-shadow-btn);
   border: 1px solid rgba(255, 255, 255, 0.05);
